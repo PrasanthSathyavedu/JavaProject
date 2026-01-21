@@ -1,0 +1,15 @@
+CREATE TABLE sample.users (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    crtd_on VARCHAR(100),
+    updt_on VARCHAR(100),
+    crtd_by TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updtd_by TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE sample.users 
+ALTER COLUMN crtd_on TYPE BIGINT USING crtd_on::bigint,
+ALTER COLUMN updt_on TYPE BIGINT USING updt_on::bigint;
+
